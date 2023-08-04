@@ -1,16 +1,9 @@
 const jobs = require("./data/jobs.json")
 const help = require("./helpers.js")
 
-/* Pegando data inicial e data final */
-let startDate = ''
-let EndDate = ''
-
 /* Função Principal para separar os jobs para que sejam executados em, no máximo, 8h e respeitem a data limite*/
 function schedulerJobs(jobs){
     const orderedJobs = help.sortJobs(jobs)
-
-    startDate = new Date(orderedJobs[0]['Data Máxima de conclusão'])
-    EndDate = new Date(orderedJobs[orderedJobs.length - 1]['Data Máxima de conclusão'])
 
     let list = [];
 
@@ -37,3 +30,7 @@ function schedulerJobs(jobs){
 }
 
 console.log(schedulerJobs(jobs));
+
+module.exports = {
+    schedulerJobs,
+}
